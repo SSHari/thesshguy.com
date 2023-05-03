@@ -9,6 +9,7 @@ import {
   ScrollRestoration,
 } from '@remix-run/react';
 import stylesheet from '~/tailwind.css';
+import { Header } from './components/Header';
 
 export const links: LinksFunction = () => [
   ...(cssBundleHref
@@ -29,7 +30,8 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <div id="___theSSHGuy">
+        <div id="___theSSHGuy" className="flex flex-col">
+          <Header />
           <Outlet />
         </div>
         <ScrollRestoration />
