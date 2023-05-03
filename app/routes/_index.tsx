@@ -38,4 +38,5 @@ const tagLines = [
   'Developer of Software',
   'I think, therefore I program.',
   'Level 4 Vim Sommelier',
+  'Fastest Code-Slinger in the West',
 ];
