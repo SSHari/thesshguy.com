@@ -1,0 +1,21 @@
+name: Validate
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          cache: 'npm'
+          node-version: '18.12.1'
+      - name: Install Packages
+        run: npm install
+      - name: Validate
+        run: |
+          npm run typecheck
+          npm run format:check
