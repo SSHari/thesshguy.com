@@ -26,10 +26,10 @@ function AnimatedLink({ delayFactor, ...props }: AnimatedLinkProps) {
       <NavLink
         {...props}
         className={({ isActive }) =>
-          cls('text-lg font-medium hover:text-gray-800', {
-            'text-gray-500': !isActive,
-            'text-gray-800': isActive,
-          })
+          cls(
+            'rtl inline-block text-lg font-medium transition-colors duration-200 after:block after:h-[2px] after:w-0 after:bg-gray-950 after:transition-[width] after:duration-200 hover:text-gray-950 hover:after:w-full',
+            { 'text-gray-500': !isActive, 'text-gray-950': isActive },
+          )
         }
       />
     </motion.div>
