@@ -1,5 +1,6 @@
 import type { V2_MetaFunction } from '@remix-run/node';
 import { motion } from 'framer-motion';
+import { ExternalLink } from '~/components/ExternalLink';
 
 export const meta: V2_MetaFunction = () => {
   return [{ title: 'Sai Hari | About' }];
@@ -34,9 +35,9 @@ export default function About() {
 
         <p className="max-w-sm text-justify text-lg font-medium sm:max-w-md md:max-w-lg">
           Today that building happens at{' '}
-          <a href="https://www.dragos.com/" target="_blank">
+          <ExternalLink href="https://www.dragos.com/" target="_blank">
             Dragos
-          </a>
+          </ExternalLink>
           , where our mission is to{' '}
           <span className="italic">safeguard civilization</span>. My team is
           pretty small, which is nice, because it means I get to build things
