@@ -1,6 +1,7 @@
 import type { V2_MetaFunction } from '@remix-run/node';
 import { motion } from 'framer-motion';
 import { ExternalLink } from '~/components/ExternalLink';
+import { ArrowCircleRightIcon } from '~/icons/ArrowCircleRight';
 
 export const meta: V2_MetaFunction = () => {
   return [{ title: 'Sai Hari | About' }];
@@ -61,10 +62,8 @@ export default function About() {
             'Lua',
             'Neovim',
           ].map((tech) => (
-            <li
-              key={tech}
-              className="before:mr-2 before:font-semibold before:text-gray-400 before:content-['→']"
-            >
+            <li key={tech} className="flex items-center gap-2">
+              <ArrowCircleRightIcon className="h-5 w-5 fill-gray-400" />
               {tech}
             </li>
           ))}
