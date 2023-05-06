@@ -37,7 +37,7 @@ export default function Index() {
         <div className="mt-1 flex gap-5">
           {iconConfigs.map((config, index) => (
             <motion.div
-              key={config.id}
+              key={config.title}
               variants={{
                 hidden: { opacity: 0, translateY: `${30 + 5 * index}px` },
                 visible: { opacity: 1, translateY: 0 },
@@ -50,7 +50,11 @@ export default function Index() {
                 opacity: { duration: 1, ease: [1, 0, 0.8, 1] },
               }}
             >
-              <IconLink Component={config.icon} link={config.link} />
+              <IconLink
+                title={config.title}
+                Component={config.icon}
+                link={config.link}
+              />
             </motion.div>
           ))}
         </div>
@@ -68,22 +72,22 @@ const tagLines = [
 
 const iconConfigs = [
   {
-    id: 'twitter',
+    title: 'twitter',
     icon: TwitterIcon,
     link: 'https://twitter.com/TheSSHGuy',
   },
   {
-    id: 'linkedin',
+    title: 'linkedin',
     icon: LinkedInIcon,
     link: 'https://www.linkedin.com/in/sshari/',
   },
   {
-    id: 'github',
+    title: 'github',
     icon: GitHubIcon,
     link: 'https://github.com/SSHari',
   },
   {
-    id: 'blog',
+    title: 'blog',
     icon: BlogIcon,
     link: 'https://blog.thesshguy.com',
   },
