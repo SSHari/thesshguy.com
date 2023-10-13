@@ -62,7 +62,7 @@ export default function About() {
             'Neovim',
           ].map((tech) => (
             <li key={tech} className="flex items-center gap-2">
-              <ArrowCircleRightIcon className="h-5 w-5 fill-gray-400" />
+              <ArrowCircleRightIcon className="h-5 w-5 fill-gray-50" />
               {tech}
             </li>
           ))}
