@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { ClientOnly } from 'remix-utils/client-only';
 import AnimatedName from '~/components/AnimatedName';
 import { IconLink } from '~/components/IconLink';
 import { BlogIcon } from '~/icons/BlogIcon';
@@ -31,7 +32,9 @@ export default function Index() {
             opacity: { duration: 1, ease: [1, 0, 0.8, 1] },
           }}
         >
-          {[...tagLines].sort(() => 0.5 - Math.random())[0]}
+          <ClientOnly>
+            {() => <>{[...tagLines].sort(() => 0.5 - Math.random())[0]}</>}
+          </ClientOnly>
         </motion.span>
         <div className="mt-1 flex gap-5">
           {iconConfigs.map((config, index) => (
