@@ -9,7 +9,7 @@ type IconLinkProps = {
 export function IconLink({ Component, link, title }: IconLinkProps) {
   return (
     <a href={link} title={title}>
-      <Component className="duration:500 h-8 w-8 fill-gray-400 transition hover:scale-125 hover:fill-gray-600 md:h-9 md:w-9" />
+      <Component className="duration:500 h-8 w-8 fill-gray-50 text-gray-500 transition hover:scale-125 hover:fill-gray-100 hover:text-gray-700 md:h-9 md:w-9" />
     </a>
   );
 }
