@@ -1,9 +1,8 @@
-import type { V2_MetaFunction } from '@remix-run/node';
 import { motion } from 'framer-motion';
 import { ExternalLink } from '~/components/ExternalLink';
 import { ArrowCircleRightIcon } from '~/icons/ArrowCircleRight';
 
-export const meta: V2_MetaFunction = () => {
+export const meta = () => {
   return [{ title: 'Sai Hari | About' }];
 };
 

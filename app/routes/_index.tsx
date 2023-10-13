@@ -1,4 +1,3 @@
-import type { V2_MetaFunction } from '@remix-run/node';
 import { motion } from 'framer-motion';
 import AnimatedName from '~/components/AnimatedName';
 import { IconLink } from '~/components/IconLink';
@@ -7,7 +6,7 @@ import { GitHubIcon } from '~/icons/GitHubIcon';
 import { LinkedInIcon } from '~/icons/LinkedInIcon';
 import { TwitterIcon } from '~/icons/TwitterIcon';
 
-export const meta: V2_MetaFunction = () => {
+export const meta = () => {
   return [{ title: 'Sai Hari' }];
 };
 
