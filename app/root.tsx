@@ -28,6 +28,11 @@ export default function App() {
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
         <Links />
+        <script
+          defer
+          data-domain="thesshguy.com"
+          src="https://plausible.io/js/script.js"
+        />
       </head>
       <body>
         <div id="___theSSHGuy" className="flex flex-col">
