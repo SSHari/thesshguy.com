@@ -31,7 +31,7 @@ export default function AnimatedName(props: AnimatedNameProps) {
       <title id={id}>Sai Hari</title>
       <g
         transform="matrix(0.26458333,0,0,0.26458333,-36.721026,13.30472)"
-        className="stroke-[hsl(var(--color-gray-800))] stroke-[6]"
+        className="stroke-[hsl(var(--color-warm-black))] stroke-[6]"
       >
         {namePaths.map(({ letter, path }, index) => (
           <motion.path
@@ -40,12 +40,12 @@ export default function AnimatedName(props: AnimatedNameProps) {
               hidden: {
                 opacity: 0,
                 pathLength: 0,
-                fill: 'hsl(var(--color-white))',
+                fill: 'hsl(var(--color-cream))',
               },
               visible: {
                 opacity: 1,
                 pathLength: 1,
-                fill: 'hsl(var(--color-gray-700))',
+                fill: 'hsl(var(--color-warm-black))',
               },
             }}
             initial="hidden"

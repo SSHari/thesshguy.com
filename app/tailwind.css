@@ -26,20 +26,39 @@
 
 :root {
   /* Theme CSS Variables */
-  /* COLORS */
-  --color-white: 0 0% 100%;
+  /* COLORS - Warm Minimalist Palette */
+  --color-cream: 40 25% 98%;
+  --color-warm-white: 35 20% 97%;
+  --color-off-white: 30 15% 96%;
 
-  --color-gray-50: 210, 20%, 98%;
-  --color-gray-100: 220 14% 96%;
-  --color-gray-200: 220 13% 91%;
-  --color-gray-300: 216 12% 84%;
-  --color-gray-400: 218 11% 65%;
-  --color-gray-500: 220 9% 46%;
-  --color-gray-600: 215 14% 34%;
-  --color-gray-700: 217 19% 27%;
-  --color-gray-800: 215 28% 17%;
-  --color-gray-900: 221 39% 11%;
-  --color-gray-950: 228 84% 4%;
+  --color-warm-black: 0 0% 10%;
+  --color-charcoal: 0 0% 15%;
+  --color-slate: 0 0% 25%;
+
+  --color-terracotta: 14 70% 58%;
+  --color-terracotta-dark: 14 65% 48%;
+  --color-rust: 18 60% 45%;
+
+  --color-warm-gray-100: 30 8% 92%;
+  --color-warm-gray-200: 30 6% 85%;
+  --color-warm-gray-300: 30 5% 70%;
+  --color-warm-gray-400: 30 4% 55%;
+  --color-warm-gray-500: 30 3% 40%;
+  --color-warm-gray-600: 30 3% 30%;
+
+  /* Legacy gray variables for compatibility */
+  --color-white: 0 0% 100%;
+  --color-gray-50: 30 15% 98%;
+  --color-gray-100: 30 12% 95%;
+  --color-gray-200: 30 8% 90%;
+  --color-gray-300: 30 6% 80%;
+  --color-gray-400: 30 5% 60%;
+  --color-gray-500: 30 4% 45%;
+  --color-gray-600: 30 3% 30%;
+  --color-gray-700: 0 0% 20%;
+  --color-gray-800: 0 0% 15%;
+  --color-gray-900: 0 0% 10%;
+  --color-gray-950: 0 0% 5%;
 }
 
 /* Global Styles */
@@ -65,6 +84,37 @@ body,
   margin: 0;
 }
 
+body {
+  background-color: hsl(var(--color-cream));
+  color: hsl(var(--color-warm-black));
+  position: relative;
+}
+
+/* Subtle grain texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.03;
+  z-index: 9999;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
 .rtl {
   direction: rtl;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection color */
+::selection {
+  background-color: hsl(var(--color-terracotta) / 0.2);
+  color: hsl(var(--color-warm-black));
 }
