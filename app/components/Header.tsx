@@ -1,40 +1,8 @@
-import { Link, NavLink, useMatches, type NavLinkProps } from '@remix-run/react';
+import { Link, NavLink, useMatches } from '@remix-run/react';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { cls } from '~/utils/helpers';
 import AnimatedName from './AnimatedName';
-
-type AnimatedLinkProps = NavLinkProps & {
-  delayFactor: number;
-};
-
-function AnimatedLink({ delayFactor, ...props }: AnimatedLinkProps) {
-  return (
-    <motion.div
-      variants={{
-        hidden: { opacity: 0 },
-        visible: { opacity: 1 },
-      }}
-      initial="hidden"
-      animate="visible"
-      transition={{
-        delay: 0.25 * delayFactor,
-        default: { duration: 1.25, ease: 'easeInOut' },
-        opacity: { duration: 0.6, ease: [1, 0, 0.8, 1] },
-      }}
-    >
-      <NavLink
-        {...props}
-        className={({ isActive }) =>
-          cls(
-            'rtl inline-block text-lg font-medium transition-colors duration-200 after:block after:h-[2px] after:w-0 after:bg-gray-950 after:transition-[width] after:duration-200 hover:text-gray-950 hover:after:w-full',
-            { 'text-gray-500': !isActive, 'text-gray-950': isActive },
-          )
-        }
-      />
-    </motion.div>
-  );
-}
 
 export function Header() {
   const match = useMatches();
@@ -44,24 +12,52 @@ export function Header() {
 
   return (
     <div>
-      <nav
+      <motion.nav
         className={cls(
-          'fixed left-0 right-0 top-0 z-50 flex h-16 items-center justify-between bg-white px-5 py-2 transition-shadow duration-75 ease-in md:px-24 lg:px-48',
+          'fixed left-0 right-0 top-0 z-50 flex h-20 items-center justify-between bg-cream/80 px-6 backdrop-blur-sm transition-all duration-200 md:px-12',
           {
-            'shadow-[0px_24px_48px_rgb(0,0,0,.16)]': !!ref.current && !isInView,
+            'border-b border-warm-gray-200': !!ref.current && !isInView,
           },
         )}
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
       >
-        <Link to="/" className="h-full">
+        <Link to="/" className="h-full py-4">
           {id !== 'routes/_index' && <AnimatedName speed="normal" />}
         </Link>
-        <div className="mt-3 flex gap-2">
-          <AnimatedLink to="/about" delayFactor={1}>
-            About
-          </AnimatedLink>
-        </div>
-      </nav>
-      <div ref={ref} className="h-16 w-full" />
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4, duration: 0.6 }}
+        >
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              cls('group relative text-base font-medium transition-colors', {
+                'text-warm-gray-400 hover:text-warm-black': !isActive,
+                'text-warm-black': isActive,
+              })
+            }
+          >
+            {({ isActive }) => (
+              <>
+                About
+                <span
+                  className={cls(
+                    'absolute -bottom-1 left-0 h-px bg-terracotta transition-all duration-300',
+                    {
+                      'w-0 group-hover:w-full': !isActive,
+                      'w-full': isActive,
+                    },
+                  )}
+                />
+              </>
+            )}
+          </NavLink>
+        </motion.div>
+      </motion.nav>
+      <div ref={ref} className="h-20 w-full" />
     </div>
   );
 }

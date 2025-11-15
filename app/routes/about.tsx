@@ -1,6 +1,5 @@
+import { Link } from '@remix-run/react';
 import { motion } from 'framer-motion';
-import { ExternalLink } from '~/components/ExternalLink';
-import { ArrowCircleRightIcon } from '~/icons/ArrowCircleRight';
 
 export const meta = () => {
   return [{ title: 'Sai Hari | About' }];
@@ -8,66 +7,154 @@ export const meta = () => {
 
 export default function About() {
   return (
-    <main className="flex flex-col items-center py-16 md:justify-center">
-      <motion.div
-        variants={{
-          hidden: { opacity: 0, translateY: '30px' },
-          visible: { opacity: 1, translateY: 0 },
-        }}
-        initial="hidden"
-        animate="visible"
-        transition={{
-          delay: 0.5,
-          default: { duration: 1.25, ease: 'easeInOut' },
-          opacity: { duration: 0.75, ease: [1, 0, 0.8, 1] },
-        }}
-        className="mx-auto flex w-[90vw] max-w-[800px] flex-col items-center gap-4 rounded-2xl border border-transparent px-8 py-12 pb-12 pt-9 text-gray-500 shadow-[0px_24px_48px_rgb(0,0,0,.16)] md:h-[revert]"
-      >
-        <h1 className="w-full max-w-sm text-xl font-semibold text-gray-700 sm:max-w-md md:max-w-lg">
-          About Me
-        </h1>
+    <main className="flex min-h-screen w-full flex-col items-center justify-center px-6 py-24 md:px-12">
+      <div className="flex w-full max-w-3xl flex-col gap-20">
+        {/* Back link */}
+        <motion.div
+          initial={{ opacity: 0, x: -10 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+        >
+          <Link
+            to="/"
+            className="group inline-flex items-center gap-2 text-sm font-medium text-warm-gray-400 transition-colors hover:text-terracotta"
+          >
+            <span className="transition-transform group-hover:-translate-x-1">
+              ←
+            </span>
+            <span>Back</span>
+          </Link>
+        </motion.div>
 
-        <p className="max-w-sm text-justify text-lg font-medium sm:max-w-md md:max-w-lg">
-          Hey there! My name is Sai and I like to build things. Usually I'm
-          building for the web, but as long as I'm having fun, the{' '}
-          <span className="italic">where</span> isn't so important.
-        </p>
+        {/* About content */}
+        <motion.article
+          className="flex flex-col gap-12"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.8, ease: 'easeOut' }}
+        >
+          {/* Header */}
+          <div className="flex flex-col gap-2">
+            <h1 className="text-4xl font-semibold tracking-tight text-warm-black md:text-5xl lg:text-6xl">
+              About Me
+            </h1>
+            <div className="h-px w-16 bg-terracotta" />
+          </div>
 
-        <p className="max-w-sm text-justify text-lg font-medium sm:max-w-md md:max-w-lg">
-          Today that building happens at{' '}
-          <ExternalLink href="https://www.dragos.com/" target="_blank">
-            Dragos
-          </ExternalLink>
-          , where our mission is to{' '}
-          <span className="italic">safeguard civilization</span>. My team is
-          pretty small, which is nice, because it means I get to build things
-          that span across our tech stack.
-        </p>
+          {/* Content sections */}
+          <div className="flex flex-col gap-8 text-lg leading-relaxed text-warm-gray-600 md:text-xl">
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+            >
+              Hey there! My name is Sai and I like to build things. Usually I'm
+              building for the web, but as long as I'm having fun, the{' '}
+              <span className="italic text-warm-black">where</span> isn't so
+              important.
+            </motion.p>
 
-        <p className="max-w-sm text-justify text-lg font-medium sm:max-w-md md:max-w-lg">
-          Here are some of the more recent technologies I've been working with:
-        </p>
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+            >
+              Today that building happens at{' '}
+              <a
+                href="https://www.dragos.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative text-warm-black underline decoration-terracotta decoration-2 underline-offset-4 transition-colors hover:text-terracotta"
+              >
+                Dragos
+              </a>
+              , where our mission is to{' '}
+              <span className="italic text-warm-black">
+                safeguard civilization
+              </span>
+              . My team is pretty small, which is nice, because it means I get
+              to build things that span across our tech stack.
+            </motion.p>
+          </div>
 
-        <ul className="grid w-full max-w-sm grid-cols-2 gap-2 py-2 text-justify text-lg font-medium sm:max-w-md md:max-w-lg md:grid-cols-3">
-          {[
-            'React',
-            'Node',
-            'TypeScript',
-            'Elasticsearch',
-            'AWS Services',
-            'Terraform',
-            'Docker',
-            'Kubernetes',
-            'Lua',
-            'Neovim',
-          ].map((tech) => (
-            <li key={tech} className="flex items-center gap-2">
-              <ArrowCircleRightIcon className="h-5 w-5 fill-gray-50" />
-              {tech}
-            </li>
-          ))}
-        </ul>
-      </motion.div>
+          {/* Tech stack */}
+          <motion.div
+            className="flex flex-col gap-6"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.6 }}
+          >
+            <h2 className="text-base font-medium uppercase tracking-wider text-warm-gray-400">
+              Recent Technologies
+            </h2>
+            <div className="grid grid-cols-2 gap-x-8 gap-y-3 md:grid-cols-3">
+              {technologies.map((tech, index) => (
+                <motion.div
+                  key={tech}
+                  className="group flex items-center gap-3"
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.7 + index * 0.05, duration: 0.4 }}
+                >
+                  <span className="font-mono text-xs text-terracotta">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <span className="text-base font-medium text-warm-black transition-colors group-hover:text-terracotta">
+                    {tech}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Optional: Get in touch section */}
+          <motion.div
+            className="mt-8 flex flex-col gap-4 rounded-2xl border border-warm-gray-200 bg-warm-white p-8"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.6 }}
+          >
+            <h2 className="text-lg font-semibold text-warm-black">
+              Let's connect
+            </h2>
+            <p className="text-base leading-relaxed text-warm-gray-600">
+              I'm always interested in hearing about new projects and
+              opportunities. Feel free to reach out on{' '}
+              <a
+                href="https://twitter.com/TheSSHGuy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-warm-black underline decoration-terracotta decoration-2 underline-offset-2 transition-colors hover:text-terracotta"
+              >
+                Twitter
+              </a>{' '}
+              or{' '}
+              <a
+                href="https://www.linkedin.com/in/sshari/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-warm-black underline decoration-terracotta decoration-2 underline-offset-2 transition-colors hover:text-terracotta"
+              >
+                LinkedIn
+              </a>
+              .
+            </p>
+          </motion.div>
+        </motion.article>
+      </div>
     </main>
   );
 }
+
+const technologies = [
+  'React',
+  'Node',
+  'TypeScript',
+  'Elasticsearch',
+  'AWS Services',
+  'Terraform',
+  'Docker',
+  'Kubernetes',
+  'Lua',
+  'Neovim',
+];
